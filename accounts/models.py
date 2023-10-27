@@ -35,6 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_notify = models.BooleanField(default=True)
 
     objects = CustomUserManager()
 
