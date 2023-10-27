@@ -8,14 +8,27 @@ class Parent(models.Model):
     class Meta:
         abstract = True
 
+
 class AboutUs(Parent):
+    title = models.CharField(max_length=50)
     about = models.TextField()
+
+    def __str__(self) -> str:
+        return self.title
+
 
 class Subscribe(Parent):
     email = models.EmailField(unique=True)
+
+    def __str__(self) -> str:
+        return self.email
+
 
 class ContactUs(Parent):
     name = models.CharField(max_length=99)
     subject = models.CharField(max_length=255)
     email = models.EmailField()
     message = models.TextField()
+
+    def __str__(self) -> str:
+        return f'{self.name} - {self.subject}'
