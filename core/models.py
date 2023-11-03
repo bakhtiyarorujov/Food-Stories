@@ -16,6 +16,9 @@ class AboutUs(Parent):
     def __str__(self) -> str:
         return self.title
 
+    class Meta:
+        verbose_name = 'About Us'
+        verbose_name_plural = 'About Us'
 
 class Subscribe(Parent):
     email = models.EmailField(unique=True)
@@ -32,3 +35,7 @@ class ContactUs(Parent):
 
     def __str__(self) -> str:
         return f'{self.name} - {self.subject}'
+    
+    class Meta:
+        verbose_name = 'Contact Us'
+        verbose_name_plural = 'Contact Us'

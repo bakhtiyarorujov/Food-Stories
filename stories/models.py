@@ -12,11 +12,15 @@ class Category(Parent):
     def __str__(self) -> str:
         return self.name
 
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 class Receipe(Parent):
     title = models.CharField(max_length=99)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_recipe')
     description = models.TextField()
+    small_description = models.CharField(max_length=255)
     photo = models.ImageField(upload_to='media/recipes')
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_receipe')
 
@@ -29,6 +33,10 @@ class StoryCategory(Parent):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name = 'Story Category'
+        verbose_name_plural = 'Story Categories'
 
 
 class StoryTag(Parent):
@@ -49,6 +57,10 @@ class Story(Parent):
 
     def __str__(self) -> str:
         return self.title
+    
+    class Meta:
+        verbose_name = 'Story'
+        verbose_name_plural = 'Stories'
 
 
 class Comment(Parent):

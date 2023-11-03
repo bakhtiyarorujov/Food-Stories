@@ -1,8 +1,18 @@
 from django.shortcuts import render
+from .models import (Category,
+                     Receipe,
+                     StoryCategory,
+                     StoryTag,
+                     Story,
+                     Comment)
 
 # Create your views here.
 def story_list(request):
-    return render(request, 'stories.html')
+    stories = Story.objects.all()
+    context = {
+        'stories': stories
+    }
+    return render(request, 'stories.html', context=context)
 
 def story_detail(request):
     return render(request, 'single.html')
